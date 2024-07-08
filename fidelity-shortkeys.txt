@@ -1,0 +1,298 @@
+[
+  {
+    "key": "ctrl+l",
+    "label": "Fidelity Username",
+    "action": "javascript",
+    "code": "document.getElementById('dom-username-input').value = 'a';\n",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ],
+    "activeInInputs": true
+  },
+  {
+    "key": "ctrl+option+l",
+    "label": "Fidelity Password",
+    "action": "javascript",
+    "code": "document.getElementById('dom-pswd-input').value = '@';\n",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ],
+    "activeInInputs": true
+  },
+  {
+    "key": "ctrl+b",
+    "action": "javascript",
+    "code": "document.getElementById('dom-login-button').click();\n",
+    "label": "Fidelity Login",
+    "activeInInputs": true,
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "ctrl+option+o",
+    "label": "Fidelity Option Chain",
+    "action": "javascript",
+    "code": "var elementHtml = document.querySelector('.oar-option-chain-container').outerHTML;\nnavigator.clipboard.writeText(elementHtml).then(function() {\n  console.log('Async: Copying to clipboard was successful!');\n}, function(err) {\n  console.error('Async: Could not copy text: ', err);\n});\n",
+    "activeInInputs": true,
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "label": "Fidelity Sector",
+    "key": "ctrl+option+s",
+    "action": "javascript",
+    "activeInInputs": true,
+    "code": "sectorText = Array.from(document.querySelectorAll('div.left')).find(el => el.textContent.trim() === \"Sector\")?.nextElementSibling.querySelector('span').textContent.trim();\nif (sectorText) navigator.clipboard.writeText(sectorText);",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "ctrl+option+e",
+    "label": "Fidelity Earnings",
+    "action": "javascript",
+    "activeInInputs": true,
+    "code": "Array.from(document.querySelectorAll('h2.pvd-heading-XS')).find(el => el.textContent.trim() === \"Earnings\").closest('.f2-card-header').querySelector('.more-link a').click();\n",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "ctrl+shift+e",
+    "label": "Fidelity Earnings Details",
+    "action": "javascript",
+    "code": "Array.from(document.querySelectorAll('div.tab a')).find(el => el.textContent.trim() === \"Earnings Detail\").click();",
+    "activeInInputs": true,
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "ctrl+shift+option+e",
+    "label": "Fidelity Earnings Extract",
+    "action": "javascript",
+    "code": "copyEarningsDataToClipboard = () => { const table = document.querySelector('.table-container table'); let csvText = ''; const headers = table.querySelectorAll('thead th'); headers.forEach((header, index) => { csvText += '\"' + header.textContent.trim() + '\"'; if (index < headers.length - 1) csvText += ','; }); csvText += '\\n'; const rows = table.querySelectorAll('tbody tr'); rows.forEach(row => { const cells = row.querySelectorAll('td'); cells.forEach((cell, index) => { csvText += '\"' + cell.textContent.trim().replace(/\"/g, '\"\"') + '\"'; if (index < cells.length - 1) csvText += ','; }); csvText += '\\n'; }); const textarea = document.createElement('textarea'); textarea.style.position = 'fixed'; textarea.style.opacity = '0'; textarea.value = csvText; document.body.appendChild(textarea); textarea.focus(); textarea.select(); try { const successful = document.execCommand('copy'); const msg = successful ? 'successful' : 'unsuccessful'; console.log('Fallback: Copying text command was ' + msg); } catch (err) { console.error('Fallback: Oops, unable to copy', err); } document.body.removeChild(textarea); }; const viewMoreButton = document.querySelector('.viewMore-link.expand'); if (viewMoreButton) { viewMoreButton.click(); setTimeout(copyEarningsDataToClipboard, 500); } else { copyEarningsDataToClipboard(); }",
+    "activeInInputs": true,
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "command+option+e",
+    "label": "Fidelity Earnings Close",
+    "action": "javascript",
+    "code": "Array.from(document.querySelectorAll('h2.pvd-heading-XS')).find(el => el.textContent.trim() === \"Earnings Details\").closest('.f2-card-header').querySelector('.color-action').click();\n",
+    "activeInInputs": true,
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "ctrl+option+i",
+    "label": "Fidelity Institutions",
+    "action": "javascript",
+    "activeInInputs": true,
+    "code": "Array.from(document.querySelectorAll('h2.pvd-heading-XS')).find(el => el.textContent.trim() === \"Ownership & insiders\").closest('.nre-card-header').querySelector('.pvd-link__text').click();\n",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "ctrl+shift+option+i",
+    "label": "Fidelity Institutions Extract",
+    "action": "javascript",
+    "activeInInputs": true,
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "command+option+i",
+    "label": "Fidelity Institutions Close",
+    "action": "javascript",
+    "activeInInputs": true,
+    "code": "document.querySelectorAll('.pvd-link__text').forEach(el => el.textContent.includes(\"Close \") && el.click());\n",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "ctrl+option+f",
+    "label": "Fidelity Financials Open",
+    "action": "javascript",
+    "activeInInputs": true,
+    "code": "Array.from(document.querySelectorAll('h2.pvd-heading-XS')).find(el => el.textContent.trim() === \"Financial statements\").closest('.nre-card-header').querySelector('.pvd-link__text').click();\n",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "label": "Fidelity Balance Sheet Annual",
+    "key": "ctrl+option+b",
+    "action": "javascript",
+    "code": "document.querySelectorAll('a').forEach(element => { if (element.textContent === 'Annual') { element.click(); }});",
+    "activeInInputs": true,
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "label": "Fidelity Balance Sheet Extract",
+    "key": "ctrl+shift+option+b",
+    "action": "javascript",
+    "code": "const copyBalanceSheetDataToClipboard = () => { const assetsTable = document.querySelector('#tableAssets-container table'); const liabilitiesTable = document.querySelector('#tableLiab-container table'); let csvText = ''; const processTable = (table) => { let localCsvText = ''; const headers = table.querySelectorAll('thead th'); headers.forEach((header, index) => { localCsvText += '\"' + header.textContent.trim() + '\"'; if (index < headers.length - 1) localCsvText += ','; }); localCsvText += '\\n'; const rows = table.querySelectorAll('tbody tr'); rows.forEach(row => { const cells = row.querySelectorAll('td, th'); cells.forEach((cell, index) => { localCsvText += '\"' + cell.textContent.trim().replace(/\"/g, '\"\"') + '\"'; if (index < cells.length - 1) localCsvText += ','; }); localCsvText += '\\n'; }); return localCsvText; }; csvText += processTable(liabilitiesTable); csvText += '\\n'; csvText += processTable(assetsTable); const textarea = document.createElement('textarea'); textarea.style.position = 'fixed'; textarea.style.opacity = '0'; textarea.value = csvText; document.body.appendChild(textarea); textarea.focus(); textarea.select(); try { const successful = document.execCommand('copy'); const msg = successful ? 'successful' : 'unsuccessful'; console.log('Copy to clipboard was ' + msg); } catch (err) { console.error('Error copying to clipboard', err); } document.body.removeChild(textarea); }; copyBalanceSheetDataToClipboard(); \n",
+    "activeInInputs": true,
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "ctrl+option+p",
+    "label": "Fidelity P&L Open",
+    "action": "javascript",
+    "code": "const clickIncomeStatement = () => { document.querySelectorAll('.pvd-tab__tab').forEach(tab => { if (tab.textContent.trim() === \"Income statement\") tab.click(); }); }; clickIncomeStatement();\n",
+    "activeInInputs": true,
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "label": "Fidelity P&L Extract",
+    "key": "ctrl+shift+option+p",
+    "action": "javascript",
+    "code": "copyNetIncomeTableToClipboard = () => { table = document.querySelector('#incSNetIncome-table'); csvText = ''; processTable = (table) => { localCsvText = ''; headers = table.querySelectorAll('thead th'); headers.forEach((header, index) => { localCsvText += '\"' + header.textContent.trim() + '\"'; if (index < headers.length - 1) localCsvText += ','; }); localCsvText += '\\n'; rows = table.querySelectorAll('tbody tr'); rows.forEach(row => { cells = row.querySelectorAll('td, th'); cells.forEach((cell, index) => { localCsvText += '\"' + cell.textContent.trim().replace(/\"/g, '\"\"') + '\"'; if (index < cells.length - 1) localCsvText += ','; }); localCsvText += '\\n'; }); return localCsvText; }; csvText += processTable(table); textarea = document.createElement('textarea'); textarea.style.position = 'fixed'; textarea.style.left = '0'; textarea.style.top = '0'; textarea.style.opacity = '0'; textarea.value = csvText; document.body.appendChild(textarea); textarea.focus(); textarea.select(); try { successful = document.execCommand('copy'); msg = successful ? 'successful' : 'unsuccessful'; } catch (err) { console.error('Error copying to clipboard', err); } document.body.removeChild(textarea); }; copyNetIncomeTableToClipboard();\n",
+    "activeInInputs": true,
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "action": "javascript",
+    "code": "document.querySelectorAll('div[aria-labelledby=\"pvd-financial-statement-tab-income\"] a').forEach(element => { if (element.textContent.trim() === 'Quarterly') { element.click(); }});\n",
+    "activeInInputs": true,
+    "key": "ctrl+option+q",
+    "label": "Fidelity P&L Quarterly Open",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "ctrl+option+c",
+    "label": "Fidelity Cash Flow Open",
+    "action": "javascript",
+    "activeInInputs": true,
+    "sites": "",
+    "sitesArray": [
+      ""
+    ],
+    "code": "const clickCashFlowStatement = () => { document.querySelectorAll('.pvd-tab__tab').forEach(tab => { if (tab.textContent.trim() === \"Cash flow\") tab.click(); }); }; clickCashFlowStatement();\n"
+  },
+  {
+    "label": "Fidelity Cash Flow Extract",
+    "action": "javascript",
+    "key": "ctrl+shift+option+c",
+    "activeInInputs": true,
+    "sites": "",
+    "sitesArray": [
+      ""
+    ],
+    "code": "const copyOperatingActivitiesToClipboard = () => { const table = document.querySelector('#cfOperatingActivities-table'); let csvText = ''; const processTable = (table) => { let localCsvText = ''; const headers = table.querySelectorAll('thead th'); headers.forEach((header, index) => { localCsvText += '\"' + header.textContent.trim() + '\"'; if (index < headers.length - 1) localCsvText += ','; }); localCsvText += '\\n'; const rows = table.querySelectorAll('tbody tr'); rows.forEach(row => { const cells = row.querySelectorAll('td, th'); cells.forEach((cell, index) => { localCsvText += '\"' + cell.textContent.trim().replace(/\"/g, '\"\"') + '\"'; if (index < cells.length - 1) localCsvText += ','; }); localCsvText += '\\n'; }); return localCsvText; }; csvText += processTable(table); const textarea = document.createElement('textarea'); textarea.style.position = 'fixed'; textarea.style.left = '0'; textarea.style.top = '0'; textarea.style.opacity = '0'; textarea.value = csvText; document.body.appendChild(textarea); textarea.focus(); textarea.select(); try { const successful = document.execCommand('copy'); const msg = successful ? 'successful' : 'unsuccessful'; } catch (err) { console.error('Error copying to clipboard', err); } document.body.removeChild(textarea); }; copyOperatingActivitiesToClipboard(); "
+  },
+  {
+    "sites": "",
+    "sitesArray": [
+      ""
+    ],
+    "key": "ctrl+h",
+    "label": "Page HTML",
+    "action": "javascript",
+    "activeInInputs": true,
+    "code": "(() => { const el = document.createElement('textarea'); el.value = document.documentElement.outerHTML; document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el); })();"
+  },
+  {
+    "key": "ctrl+p",
+    "label": "Fidelity Copy Price",
+    "action": "javascript",
+    "code": "copyPriceToClipboard = () => { priceText = document.querySelector('.nre-quick-quote-price').textContent; textarea = document.createElement('textarea'); textarea.style.position = 'fixed'; textarea.style.left = '0'; textarea.style.top = '0'; textarea.style.opacity = '0'; textarea.value = priceText; document.body.appendChild(textarea); textarea.focus(); textarea.select(); try { successful = document.execCommand('copy'); msg = successful ? 'successful' : 'unsuccessful'; } catch (err) { console.error('Error copying to clipboard', err); } document.body.removeChild(textarea); }; copyPriceToClipboard(); ",
+    "activeInInputs": true,
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "ctrl+shift+p",
+    "label": "Fidelity Copy 52wk-Low",
+    "action": "javascript",
+    "activeInInputs": true,
+    "code": "copyPriceToClipboard = () => { priceText = document.querySelector('div[nre-cy=\"nre-quick-quote-52-week-range-value\"]').querySelector('div[class=\"low-price\"').textContent.replace(/\\s+/g, ' ').trim(); textarea = document.createElement('textarea'); textarea.style.position = 'fixed'; textarea.style.left = '0'; textarea.style.top = '0'; textarea.style.opacity = '0'; textarea.value = priceText; document.body.appendChild(textarea); textarea.focus(); textarea.select(); try { successful = document.execCommand('copy'); msg = successful ? 'successful' : 'unsuccessful'; } catch (err) { console.error('Error copying to clipboard', err); } document.body.removeChild(textarea); }; copyPriceToClipboard(); ",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "command+shift+p",
+    "label": "Fidelity Copy 52wk-High",
+    "action": "javascript",
+    "activeInInputs": true,
+    "code": "copyPriceToClipboard = () => { priceText = document.querySelector('div[nre-cy=\"nre-quick-quote-52-week-range-value\"]').querySelector('div[class=\"high-price\"').textContent.replace(/\\s+/g, ' ').trim(); textarea = document.createElement('textarea'); textarea.style.position = 'fixed'; textarea.style.left = '0'; textarea.style.top = '0'; textarea.style.opacity = '0'; textarea.value = priceText; document.body.appendChild(textarea); textarea.focus(); textarea.select(); try { successful = document.execCommand('copy'); msg = successful ? 'successful' : 'unsuccessful'; } catch (err) { console.error('Error copying to clipboard', err); } document.body.removeChild(textarea); }; copyPriceToClipboard(); ",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "action": "javascript",
+    "code": "copyPriceToClipboard = () => { volText = document.querySelector('div[nre-cy=\"nre-quick-quote-volume-value\"]').textContent; textarea = document.createElement('textarea'); textarea.style.position = 'fixed'; textarea.style.left = '0'; textarea.style.top = '0'; textarea.style.opacity = '0'; textarea.value = volText; document.body.appendChild(textarea); textarea.focus(); textarea.select(); try { successful = document.execCommand('copy'); msg = successful ? 'successful' : 'unsuccessful'; } catch (err) { console.error('Error copying to clipboard', err); } document.body.removeChild(textarea); }; copyPriceToClipboard(); ",
+    "key": "ctrl+v",
+    "activeInInputs": true,
+    "label": "Fidelity Copy Volume",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "ctrl+shift+v",
+    "label": "Fidelity Copy 10-90d Avg Volume",
+    "action": "javascript",
+    "code": "copyPriceToClipboard = () => { avgVolText = document.querySelector('div[nre-cy=\"nre-quick-quote-avg-vol-10-day-value\"]').textContent; textarea = document.createElement('textarea'); textarea.style.position = 'fixed'; textarea.style.left = '0'; textarea.style.top = '0'; textarea.style.opacity = '0'; textarea.value = avgVolText; document.body.appendChild(textarea); textarea.focus(); textarea.select(); try { successful = document.execCommand('copy'); msg = successful ? 'successful' : 'unsuccessful'; } catch (err) { console.error('Error copying to clipboard', err); } document.body.removeChild(textarea); }; copyPriceToClipboard(); ",
+    "activeInInputs": true,
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "label": "Fidelity Copy Day Range",
+    "action": "javascript",
+    "key": "ctrl+shift+d",
+    "activeInInputs": true,
+    "code": "copyPriceToClipboard = () => { dayRange = document.querySelector('div[nre-cy=\"nre-quick-quote-day-range-value\"]').textContent; textarea = document.createElement('textarea'); textarea.style.position = 'fixed'; textarea.style.left = '0'; textarea.style.top = '0'; textarea.style.opacity = '0'; textarea.value = dayRange; document.body.appendChild(textarea); textarea.focus(); textarea.select(); try { successful = document.execCommand('copy'); msg = successful ? 'successful' : 'unsuccessful'; } catch (err) { console.error('Error copying to clipboard', err); } document.body.removeChild(textarea); }; copyPriceToClipboard(); ",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  }
+]
